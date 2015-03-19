@@ -50,3 +50,26 @@ $("#topContacts").append(formattedLoc);
 var formattedSkills = HTMLskills.replace("%data%", bio.skills.join("</li><li>"))
 $("#header").append(HTMLskillsStart);
 $("#header").append(formattedSkills);
+
+
+/*Work/edu*/
+var work = {
+  "position" : "Domestic Engineer",
+  "employer" : "Unwanted Children",
+  "years" : 7,
+  "city" : "Worldwide"
+};
+
+var education = {
+  "name" : "GED",
+  "years" : "0",
+  "city" : "Fairfax, VA"
+}
+
+var workPosition = HTMLworkTitle.replace("%data%", work["position"]);
+$("#workExperience").append(HTMLworkStart);
+$("#workExperience").append(workPosition);
+
+$("#education").append(HTMLschoolStart);
+var schoolName = HTMLschoolName.replace("%data%", education.name);
+$("#education").append(schoolName);
