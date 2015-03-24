@@ -107,7 +107,22 @@ var education = {
     ]
 }
 /*Projects*/
-var projects = {};
+var projects = {
+  "proj": [
+    {
+      "title": "Not Really a Project",
+      "date": "March 24, 2015",
+      "desc": "Just using this as a place holder, because I haven't yet had any real projects I can display at this time. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.",
+      "imgURL": "http://fillmurray.com/284/196"
+    },
+    {
+      "title": "Fake Project",
+      "date": "March 24, 2015",
+      "desc": "Just using this as a place holder, because I haven't yet had any real projects I can display at this time. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.",
+      "imgURL": "http://fillmurray.com/g/460/300"
+    }
+  ]
+}
 
 /*putting it all on the page*/
 var displayWork = function(){
@@ -150,9 +165,7 @@ var displayBio = function () {
       var formSkill = HTMLskills.replace("%data%", bio.skills[skill]);
       $("#header").append(formSkill);
     }
-
   }
-
 }
 
 $(document).click(function (loc) {
@@ -161,6 +174,30 @@ $(document).click(function (loc) {
   logClicks(x, y);
 });
 
+$("#header").prepend(internationalizeButton);
+
+function inName(name) {
+  var nameArray = name.split(" ");
+  var firstName = nameArray[0].slice(0, 1).toUpperCase() + nameArray[0].slice(1).toLowerCase();
+  var lastName = nameArray[1].toUpperCase();
+  nameArray[0] = firstName;
+  nameArray[1] = lastName;
+  var internationalName = nameArray.join(" ");
+  return internationalName;
+}
+
+projects.display = function () {
+  for (i in projects.proj) {
+    $("#projects").append(HTMLprojectStart);
+    var formTitle = HTMLprojectTitle.replace("%data%", projects.proj[i].title);
+    var formDate = HTMLprojectDates.replace("%data%", projects.proj[i].date);
+    var formDescription = HTMLprojectDescription.replace("%data%", projects.proj[i].desc);
+    var formImg = HTMLprojectImage.replace("%data%", projects.proj[i].imgURL);
+    var projContent = formTitle + formDate + formDescription + formImg;
+    $(".project-entry:last").append(projContent);
+  }
+}
 
 displayBio();
 displayWork();
+projects.display();
