@@ -73,38 +73,61 @@ var education = {
     "colleges": [
         {
             "name": "University of Pheonix",
-            "city": "Fort Polk, LA",
+            "loc": "Fort Polk, LA",
             "major": "Elementary Education",
-            "grad": [2009, false],
-            "online": true
+            "degree": "no degree",
+            "date": "2009-2009"
         }
     ],
     "onlineCourses" : [
       {
         "schoolName" : "Khan Academy",
-        "siteURL" : "https://www.khanacademy.org/",
-        "userName" : "@hooahvixen",
+        "onlineURL" : "https://www.khanacademy.org/",
+        "school" : "non-profit",
         "compCourses" : ["Intro to JS: Drawing & Animation", "HTML/CSS: Making webpages", "Hour of Code", "K-2nd Math", "Early Math Fundamentals"],
         "enrolledIn" : ["Advanced JS: Games & Visualizations", "Trigonometry", "Pre-Calculus", "Chemistry"],
-        "years" : "2014 - Present"
+        "date" : "2014 - Present"
       },
       {
         "schoolName" : "Code Academy",
-        "siteURL" : "http://www.codecademy.com",
-        "userName" : "hooahvixen",
+        "onlineURL" : "http://www.codecademy.com",
+        "school" : "private",
         "compCourses" : ["JavaScript", "jQuery"],
         "enrolledIn" : "PHP",
-        "years" : 2015
+        "date" : "2015 - Present"
       },
       {
         "schoolName" : "Udacity",
-        "siteURL" : "https://www.udacity.com/",
-        "userName" : "rachel@shebora.com",
+        "onlineURL" : "https://www.udacity.com/",
+        "school" : "for-profit",
         "compCourses" : ["Intro to HTML and CSS", "How to Use Git and GitHub"],
         "enrolledIn" : ["JavaScript Basics", "Responsive Web Design Fundamentals"],
-        "years" : 2015
+        "date" : "2015 - Present"
       }
     ]
+}
+education.display = function () {
+  $("#education").append(HTMLschoolStart);
+  var formName = HTMLschoolName.replace("%data%", education.colleges[0].name);
+  var formDegree = HTMLschoolDegree.replace("%data%", education.colleges[0].degree);
+  var formDate = HTMLschoolDates.replace("%data%", education.colleges[0].date);
+  var formLocation = HTMLschoolLocation.replace("%data%", education.colleges[0].loc);
+  var formMajor = HTMLschoolMajor.replace("%data%", education.colleges[0].major);
+  var displayCollege = formName + formDegree + formDate + formLocation + formMajor;
+  $("#education").append(displayCollege);
+
+  $("#education").append(HTMLonlineClasses);
+
+  for (i in education.onlineCourses) {
+    $("#education").append(HTMLschoolStart);
+    var formTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].schoolName);
+    var formSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+    var formDate = HTMLonlineDates.replace("%data%", education.onlineCourses[i].date);
+    var formURL = HTMLonlineURL.replace("#", education.onlineCourses[i].onlineURL);
+    var formURL = formURL.replace("%data%", education.onlineCourses[i].onlineURL);
+    var formOnSchool = formTitle + formSchool + formDate + formURL;
+    $("#education").append(formOnSchool);
+  }
 }
 /*Projects*/
 var projects = {
@@ -201,3 +224,5 @@ projects.display = function () {
 displayBio();
 displayWork();
 projects.display();
+education.display();
+$("#mapDiv").append(googleMap);
