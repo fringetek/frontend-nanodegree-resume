@@ -13,7 +13,34 @@ var bio = {
     "location" : "Fort Bragg, NC"
   }
 }
+bio.display = function () {
 
+  var formRole = HTMLheaderRole.replace("%data%", bio.contactInfo.role);
+  $("#header").prepend(formRole);
+
+  var formName = HTMLheaderName.replace("%data%", bio.contactInfo.name);
+  $("#header").prepend(formName);
+  var formImg = HTMLbioPic.replace("%data%", bio.contactInfo.picURL);
+  $("#header").append(formImg);
+
+  var formMobile = HTMLmobile.replace("%data%", bio.contactInfo.phone);
+  var formEmail = HTMLemail.replace("%data%", bio.contactInfo.email);
+  var formGit = HTMLgithub.replace("%data%", bio.contactInfo.git);
+  var formLoc = HTMLlocation.replace("%data%", bio.contactInfo.location);
+  var formContact = formMobile + formEmail + formGit + formLoc;
+  $("#topContacts").append(formContact);
+
+  if (bio.contactInfo.skills.length > 0) {
+
+    $("#header").append(HTMLskillsStart);
+
+    for (skill in bio.contactInfo.skills){
+      var formSkill = HTMLskills.replace("%data%", bio.contactInfo.skills[skill]);
+      $("#header").append(formSkill);
+    }
+  }
+  $("#header").append(internationalizeButton);
+}
 
 
 
@@ -42,6 +69,22 @@ var work = [
   }
 
 ]
+work.display = function(){
+
+  for (job in work){
+    $("#workExperience").append(HTMLworkStart);
+    var formEmp = HTMLworkEmployer.replace("%data%", work[job].employer);
+    var formPos = HTMLworkTitle.replace("%data%", work[job].position);
+    var formEmpTitle = formEmp + formPos;
+    var formDate = HTMLworkDates.replace("%data%", work[job].years);
+    var formLoc = HTMLworkLocation.replace("%data%", work[job].location);
+    var formDesc = HTMLworkDescription.replace("%data%", work[job].desc);
+    var formInfo = formDate + formLoc + formDesc;
+    var formWork = formEmpTitle + formInfo;
+    $(".work-entry:last").append(formWork);
+  }
+}
+
 
 
 /*education*/
@@ -131,6 +174,10 @@ education.display = function () {
     $("#education").append(formOnSchool);
   }
 }
+
+
+
+
 /*Projects*/
 var projects = {
   "proj": [
@@ -148,69 +195,6 @@ var projects = {
     }
   ]
 }
-
-/*putting it all on the page*/
-var displayWork = function(){
-
-  for (job in work){
-    $("#workExperience").append(HTMLworkStart);
-    var formEmp = HTMLworkEmployer.replace("%data%", work[job].employer);
-    var formPos = HTMLworkTitle.replace("%data%", work[job].position);
-    var formEmpTitle = formEmp + formPos;
-    var formDate = HTMLworkDates.replace("%data%", work[job].years);
-    var formLoc = HTMLworkLocation.replace("%data%", work[job].location);
-    var formDesc = HTMLworkDescription.replace("%data%", work[job].desc);
-    var formInfo = formDate + formLoc + formDesc;
-    var formWork = formEmpTitle + formInfo;
-    $(".work-entry:last").append(formWork);
-  }
-}
-
-var displayBio = function () {
-
-  var formRole = HTMLheaderRole.replace("%data%", bio.contactInfo.role);
-  $("#header").prepend(formRole);
-  var formName = HTMLheaderName.replace("%data%", bio.contactInfo.name);
-  $("#header").prepend(formName);
-  var formImg = HTMLbioPic.replace("%data%", bio.contactInfo.picURL);
-  $("#header").append(formImg);
-
-  var formMobile = HTMLmobile.replace("%data%", bio.contactInfo.phone);
-  var formEmail = HTMLemail.replace("%data%", bio.contactInfo.email);
-  var formGit = HTMLgithub.replace("%data%", bio.contactInfo.git);
-  var formLoc = HTMLlocation.replace("%data%", bio.contactInfo.location);
-  var formContact = formMobile + formEmail + formGit + formLoc;
-  $("#topContacts").append(formContact);
-
-  if (bio.contactInfo.skills.length > 0) {
-
-    $("#header").append(HTMLskillsStart);
-
-    for (skill in bio.contactInfo.skills){
-      var formSkill = HTMLskills.replace("%data%", bio.contactInfo.skills[skill]);
-      $("#header").append(formSkill);
-    }
-  }
-}
-
-$(document).click(function (loc) {
-  var x = loc.pageX;
-  var y = loc.pageY;
-  logClicks(x, y);
-});
-
-$("#header").prepend(internationalizeButton);
-
-function inName(name) {
-  var nameArray = name.split(" ");
-  var firstName = nameArray[0].slice(0, 1).toUpperCase() + nameArray[0].slice(1).toLowerCase();
-  var lastName = nameArray[1].toUpperCase();
-  nameArray[0] = firstName;
-  nameArray[1] = lastName;
-  var internationalName = nameArray.join(" ");
-  return internationalName;
-}
-
 projects.display = function () {
   for (i in projects.proj) {
     $("#projects").append(HTMLprojectStart);
@@ -223,8 +207,30 @@ projects.display = function () {
   }
 }
 
-displayBio();
-displayWork();
+
+
+
+/*putting it all on the page*/
+$(document).click(function (loc) {
+  var x = loc.pageX;
+  var y = loc.pageY;
+  logClicks(x, y);
+});
+
+function inName(name) {
+  var nameArray = name.split(" ");
+  var firstName = nameArray[0].slice(0, 1).toUpperCase() + nameArray[0].slice(1).toLowerCase();
+  var lastName = nameArray[1].toUpperCase();
+  nameArray[0] = firstName;
+  nameArray[1] = lastName;
+  var internationalName = nameArray.join(" ");
+  return internationalName;
+}
+
+
+
+bio.display();
+work.display();
 projects.display();
 education.display();
 $("#mapDiv").append(googleMap);
