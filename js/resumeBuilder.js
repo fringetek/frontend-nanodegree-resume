@@ -1,15 +1,17 @@
 /*bio*/
 var bio = {
-  "name" : "Rachel Presley",
-  "age" : 26,
-  "role" : "Front-end Web Developer",
-  "phone" : "(703) 647 - 0180",
-  "email" : "rachel@shebora.com",
-  "picURL" : "https://scontent-atl.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/11011889_10206303855420310_1162186412875955130_n.jpg?oh=84b000034ae31227c24b6313ec6d7a42&oe=5584B7D3",
-  "welcome" : "Long days and pleasant nights, humans.",
-  "skills" : ["HTML/CSS", "JavaScript", "JQuery", "PHP"],
-  "git" : "HooahVixen",
-  "loc" : "North Carolina"
+  contactInfo: {
+    "name" : "Rachel Presley",
+    "age" : 26,
+    "role" : "Front-end Web Developer",
+    "phone" : "(703) 647 - 0180",
+    "email" : "rachel@shebora.com",
+    "picURL" : "https://scontent-atl.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/11011889_10206303855420310_1162186412875955130_n.jpg?oh=84b000034ae31227c24b6313ec6d7a42&oe=5584B7D3",
+    "welcome" : "Long days and pleasant nights, humans.",
+    "skills" : ["HTML/CSS", "JavaScript", "JQuery", "PHP"],
+    "git" : "HooahVixen",
+    "location" : "Fort Bragg, NC"
+  }
 }
 
 
@@ -21,21 +23,21 @@ var work = [
     "position" : "Domestic Engineer",
     "employer" : "Unwanted Children",
     "years" : "2008-present",
-    "city" : "Fort Bragg, NC (previously: Enkenbach, Germany/ Fort Polk, LA/ Spring Hill, FL)",
+    "location" : "Fort Bragg, NC",
     "desc" : "I have been a stay-at-Home mother so that my husband could follow his dream of joining the army.  I control the finances, buying everything, chauffeur, cook, I'm a 'nurse', provide 'therapy', make and uphold house laws (like judge Dredd), and I handle any other odd job my family requires. I'm amazing at it. Now that my husband is getting out of the army, I've been working on educating myself so he can take a step back and I can become the main bread winner."
   },
   {
     "position" : "Pregnant Receptionist",
     "employer" : "Dance Factory",
     "years" : 2008,
-    "city" : "Arlington, VA",
+    "location" : "Arlington, VA",
     "desc" : "After my husband went to basic, I needed to make some money so I wouldn't be put out on the streets. I became a receptionist and made $10/hour. I handled calls, administrative work, created flyers, set up for conferences, set up for Friday night parties, threw up a lot (morning sickness), handled money, and I was the first person to greet customers before they went to class (I was really good at keeping students)."
   },
   {
     "position" : "Intern, Receptionist, Dance Instructor, and Executive Assistant",
     "employer" : "Alliance Dance Institute",
     "years" : "2005-2007",
-    "city" : "Alexandria, VA",
+    "location" : "Alexandria, VA",
     "desc" : "I got this job, originally, as an extracurricular activity.  I started (and basically stayed) as a receptionist. I greeted and scheduled customers; created, printed, and handed out flyers; handled money, bought things and set up for parties. Later on I began training to dance. Instead of recieving money, I traded my time for coaching lessons. I trained for competitions and to recieve my in-house certification for dance. Once I was certified, my job title became executive assistant (to the VP)/Dance instructor. My duties were as follows: teach group and private lessons, provide help for new and old students during parties, clean, set up for parties, type to dictation, edit memos, open the studio, keep students happy, create/update flyers, handle other teachers, set up for conferences, any odd jobs that anyone needed me to do, and continue my dance education. I worked up to 14-hour days and I didn't really have a life beyond the studio and school. Once I met my husband, I realized that I couldn't work 7 days a week anymore. I told this to the president of the studio and he said that he couldn't afford to give me time off, so I quit."
   }
 
@@ -47,25 +49,25 @@ var education = {
     "highSchools": [
         {
             "name": "Park View High School",
-            "city": "Sterling, VA",
+            "location": "Sterling, VA",
             "years": "2002-2003",
             "grad": false
         },
         {
             "name": "Robinson Secondary School",
-            "city": "Burke, VA",
+            "location": "Burke, VA",
             "years": ["2003-2005", "2007"],
             "grad": false
         },
         {
             "name": "T. C. Williams",
-            "city": "Alexandria, VA",
+            "location": "Alexandria, VA",
             "years": "2005-2006",
             "grad": false
         },
         {
             "name": "GED",
-            "city": "Fairfax, VA",
+            "location": "Fairfax, VA",
             "years": "2007",
             "grad": true
         }
@@ -73,7 +75,7 @@ var education = {
     "colleges": [
         {
             "name": "University of Pheonix",
-            "loc": "Fort Polk, LA",
+            "location": "Fort Polk, LA",
             "major": "Elementary Education",
             "degree": "no degree",
             "date": "2009-2009"
@@ -111,9 +113,9 @@ education.display = function () {
   var formName = HTMLschoolName.replace("%data%", education.colleges[0].name);
   var formDegree = HTMLschoolDegree.replace("%data%", education.colleges[0].degree);
   var formDate = HTMLschoolDates.replace("%data%", education.colleges[0].date);
-  var formLocation = HTMLschoolLocation.replace("%data%", education.colleges[0].loc);
+  var formLoc = HTMLschoolLocation.replace("%data%", education.colleges[0].location);
   var formMajor = HTMLschoolMajor.replace("%data%", education.colleges[0].major);
-  var displayCollege = formName + formDegree + formDate + formLocation + formMajor;
+  var displayCollege = formName + formDegree + formDate + formLoc + formMajor;
   $("#education").append(displayCollege);
 
   $("#education").append(HTMLonlineClasses);
@@ -156,7 +158,7 @@ var displayWork = function(){
     var formPos = HTMLworkTitle.replace("%data%", work[job].position);
     var formEmpTitle = formEmp + formPos;
     var formDate = HTMLworkDates.replace("%data%", work[job].years);
-    var formLoc = HTMLworkLocation.replace("%data%", work[job].city);
+    var formLoc = HTMLworkLocation.replace("%data%", work[job].location);
     var formDesc = HTMLworkDescription.replace("%data%", work[job].desc);
     var formInfo = formDate + formLoc + formDesc;
     var formWork = formEmpTitle + formInfo;
@@ -166,26 +168,26 @@ var displayWork = function(){
 
 var displayBio = function () {
 
-  var formRole = HTMLheaderRole.replace("%data%", bio.role);
+  var formRole = HTMLheaderRole.replace("%data%", bio.contactInfo.role);
   $("#header").prepend(formRole);
-  var formName = HTMLheaderName.replace("%data%", bio.name);
+  var formName = HTMLheaderName.replace("%data%", bio.contactInfo.name);
   $("#header").prepend(formName);
-  var formImg = HTMLbioPic.replace("%data%", bio.picURL);
+  var formImg = HTMLbioPic.replace("%data%", bio.contactInfo.picURL);
   $("#header").append(formImg);
 
-  var formMobile = HTMLmobile.replace("%data%", bio.phone);
-  var formEmail = HTMLemail.replace("%data%", bio.email);
-  var formGit = HTMLgithub.replace("%data%", bio.git);
-  var formLoc = HTMLlocation.replace("%data%", bio.loc);
+  var formMobile = HTMLmobile.replace("%data%", bio.contactInfo.phone);
+  var formEmail = HTMLemail.replace("%data%", bio.contactInfo.email);
+  var formGit = HTMLgithub.replace("%data%", bio.contactInfo.git);
+  var formLoc = HTMLlocation.replace("%data%", bio.contactInfo.location);
   var formContact = formMobile + formEmail + formGit + formLoc;
   $("#topContacts").append(formContact);
 
-  if (bio.skills.length > 0) {
+  if (bio.contactInfo.skills.length > 0) {
 
     $("#header").append(HTMLskillsStart);
 
-    for (skill in bio.skills){
-      var formSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+    for (skill in bio.contactInfo.skills){
+      var formSkill = HTMLskills.replace("%data%", bio.contactInfo.skills[skill]);
       $("#header").append(formSkill);
     }
   }
@@ -226,3 +228,4 @@ displayWork();
 projects.display();
 education.display();
 $("#mapDiv").append(googleMap);
+initializeMap();
