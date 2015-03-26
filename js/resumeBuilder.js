@@ -20,6 +20,8 @@ bio.display = function () {
 
   var formName = HTMLheaderName.replace("%data%", bio.contactInfo.name);
   $("#header").prepend(formName);
+  var formWelcome = HTMLwelcomeMsg.replace("%data%", bio.contactInfo.welcome);
+  $("#header").append(formWelcome);
   var formImg = HTMLbioPic.replace("%data%", bio.contactInfo.picURL);
   $("#header").append(formImg);
 
@@ -29,6 +31,7 @@ bio.display = function () {
   var formLoc = HTMLlocation.replace("%data%", bio.contactInfo.location);
   var formContact = formMobile + formEmail + formGit + formLoc;
   $("#topContacts").append(formContact);
+  $("#footerContacts").append(formContact);
 
   if (bio.contactInfo.skills.length > 0) {
 

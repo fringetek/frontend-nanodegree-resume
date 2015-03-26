@@ -15,7 +15,7 @@
 
 h1 {
   font-size: 40px;
-  color: #F5A623;
+  color: #00B7BE;
   line-height: 48px;
   display: inline;
 }
@@ -73,7 +73,7 @@ p {
 }
 
 a {
-  color: #1199C3;
+  color: #00007F;
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -82,30 +82,30 @@ a {
 .welcome-message {
   font-style: italic;
   font-size: 18px;
-  color: #F3F3F3;
+  color: #AAAAAA;
   line-height: 28px;
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  color: #19BEC4;
   display: none;
 }
 
 .orange {
-  background-color: #F5AE23;
+  background-color: #19BEC4;
 }
 
 .orange-text {
-  color: #F5AE23;
+  color: #19BEC4;
 }
 
 .white-text {
   font-weight: bold;
-  color: #FFFFFF;
+  color: #B2B200;
 }
 
 .gray {
-  background-color: #F3F3F3;
+  background-color: #88DED6;
   padding-bottom: 10px;
   clear:both;
 }
@@ -116,7 +116,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-image: url("http://www.designbolts.com/wp-content/uploads/2013/02/Grunge-Seamless-Pattern-For-Website-Background.jpg");
 }
 
 .flex-box {
