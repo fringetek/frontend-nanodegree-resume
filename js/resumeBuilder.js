@@ -211,12 +211,6 @@ projects.display = function () {
 
 
 /*putting it all on the page*/
-$(document).click(function (loc) {
-  var x = loc.pageX;
-  var y = loc.pageY;
-  logClicks(x, y);
-});
-
 function inName(name) {
   var nameArray = name.split(" ");
   var firstName = nameArray[0].slice(0, 1).toUpperCase() + nameArray[0].slice(1).toLowerCase();
