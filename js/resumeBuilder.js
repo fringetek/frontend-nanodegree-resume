@@ -15,15 +15,20 @@ var bio = {
 }
 bio.display = function () {
 
+
+
   var formRole = HTMLheaderRole.replace("%data%", bio.contactInfo.role);
   $("#header").prepend(formRole);
 
   var formName = HTMLheaderName.replace("%data%", bio.contactInfo.name);
   $("#header").prepend(formName);
+
+
+  var formImg = HTMLbioPic.replace("%data%", bio.contactInfo.picURL);
+  $("#header").prepend(formImg);
+
   var formWelcome = HTMLwelcomeMsg.replace("%data%", bio.contactInfo.welcome);
   $("#header").append(formWelcome);
-  var formImg = HTMLbioPic.replace("%data%", bio.contactInfo.picURL);
-  $("#header").append(formImg);
 
   var formMobile = HTMLmobile.replace("%data%", bio.contactInfo.phone);
   var formEmail = HTMLemail.replace("%data%", bio.contactInfo.email);
@@ -35,11 +40,11 @@ bio.display = function () {
 
   if (bio.contactInfo.skills.length > 0) {
 
-    $("#header").append(HTMLskillsStart);
+    $("#header").append("<br></br>" + HTMLskillsStart);
 
     for (skill in bio.contactInfo.skills){
       var formSkill = HTMLskills.replace("%data%", bio.contactInfo.skills[skill]);
-      $("#header").append(formSkill);
+      $("#skills:last").append(formSkill);
     }
   }
   $("#header").append(internationalizeButton);
